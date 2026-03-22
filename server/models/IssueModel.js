@@ -26,11 +26,10 @@ const IssueSchema = new Schema({
     required: true,
     unique: true,
   },
-  vote: {
-    type: Number,
-    required: true,
-    unique: true,
-  },
+  vote: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }],
   photo: {
     type: String,
     required: true,
@@ -38,6 +37,7 @@ const IssueSchema = new Schema({
   status: {
     type: String,
     enum: ["Pending", "In Progress", "Resolved"],
+    default: "Pending",
   },
   coordinates: {
     type: [Number],
