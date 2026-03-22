@@ -26,7 +26,7 @@ const IssueSchema = new Schema({
     required: true,
     unique: true,
   },
-  vote: [{
+  votes: [{
     type: Schema.Types.ObjectId,
     ref: 'User'
   }],

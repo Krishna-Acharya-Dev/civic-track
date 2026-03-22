@@ -26,18 +26,23 @@ const getUserIssues = async (req, res) => {
 
 const getIssue = async (req, res) => {
   try {
-    const id = req.params;
-    const issue = await Issue.findByID(id);
+    const id = req.params.id;
+    const issue = await Issue.findById(id);
     if (!issue) return res.status(404).json({ message: "No Issue Found" });
-    res.status(issue);
+    res.json(issue);
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: "Server error"});
   }
 };
 
 const createIssue = async (req, res) => {
   try {
-    const { title, description, category, area, photo, coordinates } = req.body;
+    const { title, description, category, area, coordinates } = req.body;
+
+    let parsedCoordinates;
+    if (coordinates) {
+      parsedCoordinates = JSON.parse(coordinates); 
+    }
 
     const issue = new Issue({
       user: req.user.id,
@@ -46,7 +51,7 @@ const createIssue = async (req, res) => {
       category,
       area,
       photo: req.file.filename,
-      coordinates,
+      coordinates: parsedCoordinates,
     });
     await issue.save();
 
@@ -82,6 +87,7 @@ const voteIssue = async (req, res) => {
       votes: issue.votes,
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "Server error" });
   }
 };

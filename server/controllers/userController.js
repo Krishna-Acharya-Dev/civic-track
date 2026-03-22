@@ -21,12 +21,12 @@ const register = async (req, res) => {
       lastname,
       email,
       phone,
-      hashedPassword,
+      password: hashedPassword,
       dob,
     });
     await user.save();
 
-    const token = jwt.sign({ id: user._id }, proccess.env.JWT_SECRET, {
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1hr",
     });
 
@@ -48,7 +48,7 @@ const login = async (req, res) => {
     if (!isMatched)
       return res.status(400).json({ message: "Invalid password" });
 
-    const token = jwt.sign({ id: user._id }, proccess.env.JWT_SECRET, {
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1hr",
     });
 
@@ -65,7 +65,7 @@ const getUser = async (req, res) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const user = User.findById(decoded.id).select("-password");
+    const user = await User.findById(decoded.id).select("-password");
 
     if (!user) return res.status(404).json({ message: "User Not Found" });
 
