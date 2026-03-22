@@ -56,8 +56,6 @@ const createIssue = async (req, res) => {
   }
 };
 
-const Issue = require("../models/Issue");
-
 const voteIssue = async (req, res) => {
   try {
     const issueId = req.params.id;

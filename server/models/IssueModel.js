@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const IssueSchema = new Schema({
   user: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "User",
     required: true,
   },
@@ -27,7 +27,7 @@ const IssueSchema = new Schema({
     unique: true,
   },
   vote: [{
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'User'
   }],
   photo: {
