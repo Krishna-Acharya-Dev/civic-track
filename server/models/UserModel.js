@@ -21,6 +21,10 @@ const UserSchema = new Schema({
     required: true,
     unique: true,
   },
+  password: {
+    type: String,
+    required: true,
+  },
   dob: {
     type: Date,
     required: true,
@@ -32,4 +36,4 @@ const UserSchema = new Schema({
   },
 });
 
-module.exports = model('User', UserSchema);
+module.exports = model("User", UserSchema);
