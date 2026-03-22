@@ -21,7 +21,7 @@ const register = async (req, res) => {
       lastname,
       email,
       phone,
-      password,
+      hashedPassword,
       dob,
       created_at,
     });
@@ -45,7 +45,7 @@ const login = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) return res.status(400).json({ message: "Invalid email" });
 
-    const isMatched = await bcrypt.compare(password, User.password);
+    const isMatched = await bcrypt.compare(password, user.password);
     if (!isMatched)
       return res.status(400).json({ message: "Invalid password" });
 
@@ -60,7 +60,7 @@ const login = async (req, res) => {
   }
 };
 
-const getUser = (req, res) => {
+const getUser = async (req, res) => {
   const token = req.header("Authorization")?.replace("Bearer ", "");
   if (!token) return res.status(401).json({ message: "Access Denied" });
 
