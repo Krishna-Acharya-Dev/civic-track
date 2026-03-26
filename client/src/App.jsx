@@ -6,6 +6,7 @@ import Auth from "./pages/Auth";
 import AdminDashboard from "./pages/AdminDashboard";
 import ReportIssue from "./pages/ReportIssue";
 import MyIssues from "./pages/MyIssues";
+import Community from "./pages/Community";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/report" element={<ReportIssue />} />
           <Route path="/my-issues" element={<MyIssues />} />
+          <Route path="/community" element={<Community />} />
         </Routes>
       </main>
     </Router>

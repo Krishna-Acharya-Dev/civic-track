@@ -12,7 +12,8 @@ export default function Navbar() {
 
   const NAV_LINKS = [
     { name: "Home", path: "/" },
-    { name: "Map", path: "/map" }
+    { name: "Map", path: "/map" },
+    { name: "Community", path: "/community" }
   ];
 
   if (user) {

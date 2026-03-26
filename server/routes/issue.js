@@ -8,8 +8,10 @@ router.use(cors());
 
 router.use(protect); // protect all routes below
 
+// Community routes
+router.get("/", issueController.getIssues);
+
 // Admin only routes
-router.get("/", admin, issueController.getIssues);
 router.patch("/:id/status", admin, issueController.updateIssueStatus);
 router.delete("/:id", admin, issueController.deleteIssue);
 
