@@ -5,7 +5,13 @@ const path = require("path");
 
 const getIssues = async (req, res) => {
   try {
-    const issues = await Issue.find()
+    const { status, category, area } = req.query;
+    const filter = {};
+    if (status) filter.status = status;
+    if (category) filter.category = category;
+    if (area) filter.area = area;
+
+    const issues = await Issue.find(filter)
       .populate("user", "firstname lastname")
       .sort({ createdAt: -1 });
     res.json(issues);
@@ -116,6 +122,31 @@ const deleteIssue = async (req, res) => {
   }
 };
 
+const updateIssueStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    if (!["Pending", "In Progress", "Resolved"].includes(status)) {
+      return res.status(400).json({ message: "Invalid status" });
+    }
+
+    const issue = await Issue.findByIdAndUpdate(
+      id,
+      { status },
+      { new: true }
+    );
+
+    if (!issue) {
+      return res.status(404).json({ message: "Issue not found" });
+    }
+
+    res.json({ message: "Issue status updated", issue });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 module.exports = {
   getIssues,
   getUserIssues,
@@ -123,4 +154,5 @@ module.exports = {
   createIssue,
   voteIssue,
   deleteIssue,
+  updateIssueStatus,
 };
