@@ -35,7 +35,7 @@ function MapBrowser() {
           <div className={styles['loading-state']}>Loading map data...</div>
         ) : (
           <MapContainer 
-            center={[40.7128, -74.0060]} 
+            center={[26.9124, 75.7873]} 
             zoom={12} 
             scrollWheelZoom={true} 
             className={styles['leaflet-map-root']}

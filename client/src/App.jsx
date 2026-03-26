@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import MapBrowser from "./pages/MapBrowser";
 import Auth from "./pages/Auth";
 import AdminDashboard from "./pages/AdminDashboard";
+import ReportIssue from "./pages/ReportIssue";
+import MyIssues from "./pages/MyIssues";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route path="/map" element={<MapBrowser />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/report" element={<ReportIssue />} />
+          <Route path="/my-issues" element={<MyIssues />} />
         </Routes>
       </main>
     </Router>

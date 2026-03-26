@@ -15,6 +15,11 @@ export default function Navbar() {
     { name: "Map", path: "/map" }
   ];
 
+  if (user) {
+    NAV_LINKS.push({ name: "Report Issue", path: "/report" });
+    NAV_LINKS.push({ name: "My Issues", path: "/my-issues" });
+  }
+
   if (user && user.isAdmin) {
     NAV_LINKS.push({ name: "Dashboard", path: "/admin" });
   }
