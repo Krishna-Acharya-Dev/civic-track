@@ -64,3 +64,9 @@ Civic Track is a comprehensive web platform built to empower communities by allo
    ```
 
 4. The application should now be accessible locally at `http://localhost:5173`.
+
+## Contributing
+Contributions are always welcome! Feel free to open a pull request or submit an issue if you have ideas for new features or find a bug.
+
+## License
+This project is open-source and available under the [MIT License](LICENSE).

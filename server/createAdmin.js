@@ -14,7 +14,7 @@ const makeAdmin = async () => {
     
     const existingAdmin = await User.findOne({ email });
     if (existingAdmin) {
-      console.log(`✅ Admin user ${email} already exists!`);
+      console.log(` Admin user ${email} already exists!`);
       process.exit(0);
     }
     
