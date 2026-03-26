@@ -47,7 +47,7 @@
   padding: 0;
 }
 
-.nav-links button {
+.nav-links a {
   font-size: 14px;
   font-weight: 500;
   color: #4a6080;
@@ -56,14 +56,15 @@
   padding: 6px 12px;
   border-radius: 8px;
   cursor: pointer;
+  text-decoration: none;
 }
 
-.nav-links button:hover {
+.nav-links a:hover {
   background-color: #eff4ff;
   color: #0b1c30;
 }
 
-.nav-links button.active {
+.nav-links a.active {
   color: #0040a1;
   font-weight: 600;
 }
@@ -134,7 +135,7 @@
   border-top: 1px solid #e5e7eb;
 }
 
-.mobile-menu button {
+.mobile-menu a {
   font-size: 14px;
   font-weight: 500;
   color: #4a6080;
@@ -144,14 +145,15 @@
   border-radius: 8px;
   text-align: left;
   cursor: pointer;
+  text-decoration: none;
 }
 
-.mobile-menu button:hover {
+.mobile-menu a:hover {
   background-color: #eff4ff;
   color: #0b1c30;
 }
 
-.mobile-menu button.active {
+.mobile-menu a.active {
   color: #0040a1;
   font-weight: 600;
   background-color: #eff4ff;

@@ -1,0 +1,75 @@
+.map-page {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.map-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.map-header h1 {
+  font-size: 3rem;
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+.map-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.map-container-wrapper {
+  height: 600px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  background: var(--bg-card);
+}
+
+.leaflet-map-root {
+  height: 100%;
+  width: 100%;
+}
+
+.loading-state {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+.issue-popup h3 {
+  margin: 0 0 0.5rem 0;
+  color: #111;
+}
+
+.issue-popup .category {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.issue-popup .status {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status[data-status="Pending"] { background: #fee2e2; color: #ef4444; }
+.status[data-status="In Progress"] { background: #fef3c7; color: #f59e0b; }
+.status[data-status="Resolved"] { background: #dcfce3; color: #10b981; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
