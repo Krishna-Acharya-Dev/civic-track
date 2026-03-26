@@ -7,13 +7,13 @@ function Community() {
   const [issues, setIssues] = useState([]);
   const [loading, setLoading] = useState(true);
   const user = JSON.parse(localStorage.getItem('user'));
+  const uploadsUrl = import.meta.env.VITE_API_UPLOADS_URL || 'http://localhost:3000/uploads/';
 
   const fetchIssues = async () => {
     try {
       const res = await fetchWithAuth('/issues');
       if (res.ok) {
         const data = await res.json();
-        // Sort by votes descending (Reddit style)
         data.sort((a, b) => b.votes.length - a.votes.length);
         setIssues(data);
       }
@@ -32,7 +32,6 @@ function Community() {
     try {
       const res = await fetchWithAuth(`/issues/${issueId}/upvote`, { method: 'PATCH' });
       if (res.ok) {
-        // Refresh to get new vote count
         fetchIssues();
       }
     } catch (err) {
@@ -78,7 +77,7 @@ function Community() {
                 <p className={styles['description']}>{issue.description}</p>
                 
                 {issue.photo && (
-                   <img src={`http://localhost:3000/uploads/${issue.photo}`} alt={issue.title} className={styles['issue-image']} />
+                   <img src={`${uploadsUrl}${issue.photo}`} alt={issue.title} className={styles['issue-image']} />
                 )}
 
                 <div className={styles['card-footer']}>

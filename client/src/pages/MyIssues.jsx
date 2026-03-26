@@ -6,6 +6,7 @@ import styles from './MyIssues.module.css';
 function MyIssues() {
   const [issues, setIssues] = useState([]);
   const [loading, setLoading] = useState(true);
+  const uploadsUrl = import.meta.env.VITE_API_UPLOADS_URL || 'http://localhost:3000/uploads/';
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -42,7 +43,7 @@ function MyIssues() {
           {issues.map(issue => (
             <div key={issue._id} className={styles['issue-card']}>
               <div className={styles['card-image']}>
-                <img src={`http://localhost:3000/uploads/${issue.photo}`} alt={issue.title} />
+                <img src={`${uploadsUrl}${issue.photo}`} alt={issue.title} />
                 <span className={`${styles['status-badge']} ${styles['status-' + issue.status.replace(' ', '').toLowerCase()]}`}>
                   {issue.status}
                 </span>
