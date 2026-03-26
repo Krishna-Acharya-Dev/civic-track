@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./CTA.module.css";
 
 export default function CTA() {
+  const navigate = useNavigate();
+
   return (
     <section className={styles.cta}>
       <div className={styles.inner}>
@@ -17,7 +20,12 @@ export default function CTA() {
           progress.
         </p>
 
-        <button className={styles.btn}>Join CivicTrack</button>
+        <button 
+          className={styles.btn}
+          onClick={() => navigate('/auth')}
+        >
+          Join CivicTrack
+        </button>
       </div>
     </section>
   );

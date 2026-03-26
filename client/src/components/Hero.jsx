@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
+  const navigate = useNavigate();
+
   return (
     <section className={styles["hero"]}>
       <div className={styles["hero-inner"]}>
@@ -23,10 +26,18 @@ export default function Hero() {
           </p>
 
           <div className={styles["hero-actions"]}>
-            <button className={styles["btn-primary"]}>
+            <button 
+              className={styles["btn-primary"]}
+              onClick={() => navigate('/map')}
+            >
               View Neighborhood Map →
             </button>
-            <button className={styles["btn-secondary"]}>Report an Issue</button>
+            <button 
+              className={styles["btn-secondary"]}
+              onClick={() => navigate('/report')}
+            >
+              Report an Issue
+            </button>
           </div>
         </div>
 
