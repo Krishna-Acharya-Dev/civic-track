@@ -137,3 +137,7 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Backend User Uploads
+server/public/uploads/*
+!server/public/uploads/.gitkeep
